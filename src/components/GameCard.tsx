@@ -3,6 +3,7 @@ import apiClient from "@/services/api-client";
 import { Card, Image, Text, Badge, Button, Group } from "@mantine/core";
 import { text } from "node:stream/consumers";
 import { useEffect, useState } from "react";
+import PlatformIconList from "./PlatformIconList";
 
 
 interface Props {
@@ -25,14 +26,9 @@ function CardDemo({game }: Props) {
 
       <Group justify="space-between" mt="md" mb="xs">
          <Text fw={500}>{game.title}</Text>
-        {/* <Badge color="pink">On Sale</Badge> */}
+          
       </Group>
-
-      <Text size="sm" c="dimmed">
-        {/* With Fjord Tours you can explore more of the magical fjord landscapes
-        with tours and activities on and around the fjords of Norway */}
-
-      </Text>
+      <PlatformIconList platform={game.platform} />
     </Card>
   );
 }
