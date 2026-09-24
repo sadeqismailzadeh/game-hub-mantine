@@ -27,7 +27,7 @@ export function HomePage() {
       <AppShell.Main>
         <Text>This is the main section, your app content here.</Text>
         <Text>Layout used in most cases – Navbar and Header with fixed position</Text>
-        <CardDemo />
+        {/* <CardDemo /> */}
         <Welcome />
         <CardGrid />
         <ColorSchemeToggle />
