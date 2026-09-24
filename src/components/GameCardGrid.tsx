@@ -10,25 +10,21 @@ import useGames, { Game } from "@/hooks/useGame";
 export function CardGrid() {
   // const [games, setGames] = useState<Game[]>([]);
   // const [error, setError] = useState([]);
-  const {games , error} = useGames();
+  const { games, error } = useGames();
 
   // useEffect(() => {
   //   apiClient.get('/games').then (res => );
   // }, []);
   return (
-    <SimpleGrid cols={3}>
+    <SimpleGrid
+      cols={{ base: 1, sm: 2, lg: 3 }}
+      spacing={{ base: 10, sm: "xl" }}
+      verticalSpacing={{ base: "md", sm: "xl" }}
+    >
       {error && <Text>{error}</Text>}
-      <ul>
-        {games.map((game) => (
-          // <li key={game.id}> {game.title}</li> 
-           <CardDemo key={game.id} game={game} />
-        ))}
-      </ul>
-     
-      {/* <div>2</div>
-      <div>3</div>
-      <div>4</div>
-      <div>5</div>  */}
+      {games.map((game) => (
+        <CardDemo key={game.id} game={game} />
+      ))}
     </SimpleGrid>
   );
 }
