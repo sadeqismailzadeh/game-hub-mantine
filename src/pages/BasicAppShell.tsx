@@ -1,11 +1,7 @@
 import { AppShell, Burger, Group, Text } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
-import CardDemo from '@/components/GameCard';
-import { CardGrid } from '@/components/GameCardGrid';
-import { ColorSchemeToggle } from '../components/ColorSchemeToggle/ColorSchemeToggle';
-import { Welcome } from '../components/Welcome/Welcome';
 
-export function HomePage() {
+export function BasicAppShell() {
   const [opened, { toggle }] = useDisclosure();
 
   return (
@@ -27,10 +23,6 @@ export function HomePage() {
       <AppShell.Main>
         <Text>This is the main section, your app content here.</Text>
         <Text>Layout used in most cases – Navbar and Header with fixed position</Text>
-        <CardDemo />
-        <Welcome />
-        <CardGrid />
-        <ColorSchemeToggle />
       </AppShell.Main>
     </AppShell>
   );
