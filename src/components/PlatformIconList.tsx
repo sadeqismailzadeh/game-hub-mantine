@@ -30,7 +30,7 @@ const PlatformIconList = ({ platform }: Props) => {
 
   return (
     <>
-      <Group>
+      <Group c="gray.6">
          <IconComponent />
       </Group>
     </>
