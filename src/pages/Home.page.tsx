@@ -4,6 +4,7 @@ import CardDemo from '@/components/GameCard';
 import { CardGrid } from '@/components/GameCardGrid';
 import { ColorSchemeToggle } from '../components/ColorSchemeToggle/ColorSchemeToggle';
 import { Welcome } from '../components/Welcome/Welcome';
+import GameCardSkeleton from '@/components/GameCardSkeleton';
 
 export function HomePage() {
   const [opened, { toggle }] = useDisclosure();
