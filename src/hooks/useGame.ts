@@ -21,7 +21,7 @@ const useGames = () => {
         if (err instanceof CanceledError) return;
         setError(err.message)});
 
-    controller.abort();
+    return () => controller.abort();
   }, []);
 
   return { games, error };
