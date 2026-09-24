@@ -1,25 +1,18 @@
+import useGames from "@/hooks/useGame";
 import apiClient from "@/services/api-client";
 import { Card, Image, Text, Badge, Button, Group } from "@mantine/core";
+import { text } from "node:stream/consumers";
 import { useEffect, useState } from "react";
 
-interface Game {
-  id: number;
-  title: string;
-}
-interface FetchGamesResponse {
-  count: number;
-  results: Game[]
-}
+
+// interface Props {
+//   game: Game;
+
+// }
+
+// function CardDemo({game }: Props) {
 function CardDemo() {
-  const [games, setGames] = useState<Game[]>([]);
-  const [error, setError] = useState("");
-
-  useEffect(() => {
-    apiClient.get('/games')
-    .then(res => setGames(res.data))
-    .catch(err => setError(err.message))
-  })
-
+  const {games , error} = useGames();
   return (
     <Card shadow="sm" padding="lg" withBorder>
       <Card.Section>
@@ -38,6 +31,7 @@ function CardDemo() {
       <Text size="sm" c="dimmed">
         With Fjord Tours you can explore more of the magical fjord landscapes
         with tours and activities on and around the fjords of Norway
+        {error &&  <Text>{error}</Text>}
         <ul>
           {games.map(game => <li key={game.id}> {game.title}</li>)}
         </ul>

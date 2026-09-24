@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { SimpleGrid } from '@mantine/core';
-import apiClient from '@/services/apiClient';
+// import apiClient from '../services/apiClient';
 import CardDemo from './GameCard';
 
 
@@ -10,9 +10,9 @@ export function CardGrid() {
   const [games, setGames] = useState([]);
   const [error, setError] = useState([]);
 
-  useEffect(() => {
-    apiClient.get('/games').then (res => );
-  }, []);
+  // useEffect(() => {
+  //   apiClient.get('/games').then (res => );
+  // }, []);
   return (
     <SimpleGrid cols={3}>
       <CardDemo />
