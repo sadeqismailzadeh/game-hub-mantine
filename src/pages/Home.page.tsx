@@ -2,9 +2,10 @@ import { AppShell, Burger, Group, Text } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import CardDemo from '@/components/GameCard';
 import { CardGrid } from '@/components/GameCardGrid';
-import { ColorSchemeToggle } from '../components/ColorSchemeToggle/ColorSchemeToggle';
 import { Welcome } from '../components/Welcome/Welcome';
 import GameCardSkeleton from '@/components/GameCardSkeleton';
+import ColorSchemeToggle from '@/components/ColorSchemeToggle';
+import NavBar from '@/components/NavBar';
 
 export function HomePage() {
   const [opened, { toggle }] = useDisclosure();
@@ -16,7 +17,8 @@ export function HomePage() {
       padding="md"
     >
       <AppShell.Header>
-        <Group h="100%" px="md">
+        <NavBar onSearch={(text) => console.log("Searching for:", text)} />
+        <Group h="100%" px="md"> 
           <Burger opened={opened} onClick={toggle} hiddenFrom="sm" size="sm" />
           Header has a burger icon below sm breakpoint
         </Group>
@@ -31,7 +33,7 @@ export function HomePage() {
         {/* <CardDemo /> */}
         {/* <Welcome /> */}
         <CardGrid />
-        <ColorSchemeToggle />
+        
       </AppShell.Main>
     </AppShell>
   );
