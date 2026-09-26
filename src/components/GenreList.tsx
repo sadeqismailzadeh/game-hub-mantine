@@ -2,13 +2,14 @@
 
 import { Genre } from "@/data/genres";
 import useGenres from "@/hooks/useGenres";
-import { Button, List, Loader, Title } from "@mantine/core";
+import { Anchor, Button, List, Loader, Title } from "@mantine/core";
 
 interface Props {
   onSelectGenre: (genre: Genre) => void;
+  selectedGenre: Genre | null
 }
 
-const GenreList = ({onSelectGenre}: Props) => {
+const GenreList = ({selectedGenre,onSelectGenre}: Props) => {
   const { data, isLoading, error } = useGenres();
   if (isLoading) return <Loader />; 
 
@@ -20,11 +21,21 @@ const GenreList = ({onSelectGenre}: Props) => {
       <List>
         {data.map((genre) => (
           <List.Item key={genre.slug}>
-            <Button onClick={() => onSelectGenre(genre)}
+            <Anchor
+              component="button"
+              type="button"
+              underline="hover"    
+              size="md"
+              fw={selectedGenre?.slug == genre.slug ? "bold" : "normal"}
+              onClick={() => onSelectGenre(genre)}
+            >
+              {genre.name}
+            </Anchor>
+            {/* <Button onClick={() => onSelectGenre(genre)}
               variant="link"
             >
               {genre.name}
-            </Button>
+            </Button> */}
           </List.Item>
         ))}
       </List>
