@@ -3,7 +3,7 @@ import { SimpleGrid } from "@mantine/core";
 // import apiClient from '../services/apiClient';
 import CardDemo from "./GameCard";
 import { Card, Image, Text, Badge, Button, Group } from "@mantine/core";
-import useGames, { Game } from "@/hooks/useGame";
+import useGames, { Game } from "@/hooks/useGames";
 import GameCardSkeleton from "./GameCardSkeleton";
 
 // interface FetchGamesResponse

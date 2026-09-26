@@ -1,4 +1,4 @@
-import useGames, {Game} from "@/hooks/useGame";
+import useGames, { Game } from "@/hooks/useGames"; 
 import apiClient from "@/services/api-client";
 import { Card, Image, Text, Badge, Button, Group } from "@mantine/core";
 import { text } from "node:stream/consumers";
