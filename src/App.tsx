@@ -12,9 +12,12 @@ import { CardGrid } from "@/components/GameCardGrid";
 import GameCardSkeleton from "@/components/GameCardSkeleton";
 import ColorSchemeToggle from "@/components/ColorSchemeToggle";
 import NavBar from "@/components/NavBar";
+import { useState } from "react";
+import { Genre } from "./data/genres";
 
 function App() {
   const [opened, { toggle }] = useDisclosure();
+  const [selectedGenre, setSelectedGenre] = useState<Genre | null >(null)
 
   return (
     <MantineProvider theme={theme}>
@@ -31,15 +34,14 @@ function App() {
           </Group>
         </AppShell.Header>
         <AppShell.Navbar p="md">
-          Navbar is collapsed on mobile at sm breakpoint. At that point it is no longer offset by
-          padding in the main element and it takes the full width of the screen when opened.
+          <GenreList onSelectGenre={(genre) => {setSelectedGenre(genre)}} />
         </AppShell.Navbar>
         <AppShell.Main>
           <Text>This is the main section, your app content here.</Text>
           <Text>Layout used in most cases – Navbar and Header with fixed position</Text>
           {/* <CardDemo /> */}
           {/* <Welcome /> */}
-          <CardGrid />
+          <CardGrid selectedGenre={selectedGenre} />
         </AppShell.Main>
       </AppShell>
     </MantineProvider>

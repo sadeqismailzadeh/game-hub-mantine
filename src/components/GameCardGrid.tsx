@@ -5,13 +5,18 @@ import CardDemo from "./GameCard";
 import { Card, Image, Text, Badge, Button, Group } from "@mantine/core";
 import useGames, { Game } from "@/hooks/useGames";
 import GameCardSkeleton from "./GameCardSkeleton";
+import { Genre } from "@/data/genres";
 
 // interface FetchGamesResponse
 
-export function CardGrid() {
+interface Props {
+  selectedGenre: Genre | null
+}
+
+export function CardGrid({selectedGenre} :  Props) {
   // const [games, setGames] = useState<Game[]>([]);
   // const [error, setError] = useState([]);
-  const { games, error, isLoading } = useGames();
+  const { games, error, isLoading } = useGames(selectedGenre);
 
   const skeletons = [1, 2, 3, 4, 5, 6];
 
