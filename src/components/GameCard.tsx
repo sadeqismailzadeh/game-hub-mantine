@@ -4,7 +4,7 @@ import { Card, Image, Text, Badge, Button, Group } from "@mantine/core";
 import { text } from "node:stream/consumers";
 import { useEffect, useState } from "react";
 import PlatformIconList from "./PlatformIconList";
-import { getImageURL } from "./ImageURL";
+import { getImageURL } from "../services/ImageURL";
 
 
 interface Props {
