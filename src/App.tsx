@@ -58,7 +58,7 @@ function App() {
                 setGameQuery({ ...gameQuery, platform });
               }}
             />
-            <SortSelector />
+            <SortSelector selectedOrder={gameQuery.sortOrder} onSelectOrder={(sortOrder) => setGameQuery({...gameQuery, sortOrder})} />
           </Group>
 
           <CardGrid gameQuery={gameQuery} />
