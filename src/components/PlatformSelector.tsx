@@ -28,12 +28,6 @@ const PlatformSelector = ({ onSelectPlatform, selectedPlatform }: Props) => {
       </Menu.Target>
       <Menu.Dropdown>
         {platforms.map((platform) => (
-          // <Menu.Item
-          //   onClick={() => onSelectPlatform(platform)}
-          //   key={platform.slug}
-          // >
-          //   {platform.name}
-          // </Menu.Item>
           <Menu.Item key={platform.slug} onClick={() => onSelectPlatform(platform)}>
             {platform.name}
           </Menu.Item>
