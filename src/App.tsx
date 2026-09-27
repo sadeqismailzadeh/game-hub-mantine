@@ -19,11 +19,11 @@ import PlatformSelector from "./components/PlatformSelector";
 import { Platform } from "./hooks/usePlatforms";
 import { platform } from "node:os";
 import { GameQuery } from "./temp/gameQuery";
-
+import SortSelector from "./components/SortSelector";
 
 function App() {
   const [opened, { toggle }] = useDisclosure();
-  const [gameQuery, setGameQuery] = useState<GameQuery>({} as GameQuery)
+  const [gameQuery, setGameQuery] = useState<GameQuery>({} as GameQuery);
 
   return (
     <MantineProvider theme={theme}>
@@ -46,17 +46,21 @@ function App() {
           <GenreList
             selectedGenre={gameQuery.genre}
             onSelectGenre={(genre) => {
-              setGameQuery({...gameQuery, genre});
+              setGameQuery({ ...gameQuery, genre });
             }}
           />
         </AppShell.Navbar>
         <AppShell.Main>
-          <PlatformSelector
-            selectedPlatform={gameQuery.platform}
-            onSelectPlatform={(platform) => {
-              setGameQuery({...gameQuery, platform});
-            }}
-          />
+          <Group gap="md" mb="md">
+            <PlatformSelector
+              selectedPlatform={gameQuery.platform}
+              onSelectPlatform={(platform) => {
+                setGameQuery({ ...gameQuery, platform });
+              }}
+            />
+            <SortSelector />
+          </Group>
+
           <CardGrid gameQuery={gameQuery} />
         </AppShell.Main>
       </AppShell>
