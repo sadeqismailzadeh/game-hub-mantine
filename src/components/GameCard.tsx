@@ -4,6 +4,7 @@ import { Card, Image, Text, Badge, Button, Group } from "@mantine/core";
 import { text } from "node:stream/consumers";
 import { useEffect, useState } from "react";
 import PlatformIconList from "./PlatformIconList";
+import { getImageURL } from "./ImageURL";
 
 
 interface Props {
@@ -18,7 +19,7 @@ function CardDemo({game }: Props) {
     <Card shadow="sm" padding="lg" withBorder>
       <Card.Section>
         <Image
-          src={game.thumbnail}
+          src={getImageURL(game.thumbnail)}
           height={160}
           alt="Norway"
         />
