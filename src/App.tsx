@@ -4,7 +4,6 @@ import { Image, MantineProvider } from "@mantine/core";
 import { theme } from "./theme";
 import GenreList from "./components/GenreList";
 import GameHeading from "./components/GameHeading";
-import logo from "./assets/Logo/logo.webp";
 
 import { AppShell, Burger, Group, Text } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
@@ -33,10 +32,7 @@ function App() {
         padding="md"
       >
         <AppShell.Header>
-          <Group justify="space-between">
-            <Image src={logo} h={40} w="auto" fit="contain" />
             <NavBar onSearch={(text) => console.log("Searching for:", text)} />
-          </Group>
 
           <Group h="100%" px="md">
             <Burger opened={opened} onClick={toggle} hiddenFrom="sm" size="sm" />
@@ -58,7 +54,10 @@ function App() {
                 setGameQuery({ ...gameQuery, platform });
               }}
             />
-            <SortSelector selectedOrder={gameQuery.sortOrder} onSelectOrder={(sortOrder) => setGameQuery({...gameQuery, sortOrder})} />
+            <SortSelector
+              selectedOrder={gameQuery.sortOrder}
+              onSelectOrder={(sortOrder) => setGameQuery({ ...gameQuery, sortOrder })}
+            />
           </Group>
 
           <CardGrid gameQuery={gameQuery} />
