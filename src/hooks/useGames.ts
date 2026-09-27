@@ -25,7 +25,12 @@ const useGames = (gameQuery: GameQuery) => {
     },
     [gameQuery],
   );
-  return { games: data, data, error, isLoading };
+
+  const search = gameQuery.searchedText?.trim().toLowerCase();
+
+  const games = search ? data.filter((game) => game.title.toLowerCase().includes(search)) : data;
+
+  return { games, error, isLoading };
 };
 
 export default useGames;
