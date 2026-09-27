@@ -27,7 +27,6 @@ function CardDemo({game }: Props) {
 
       <Group justify="space-between" mt="md" mb="xs">
          <Text fw={500}>{game.title}</Text>
-          
       </Group>
       <PlatformIconList platform={game.platform} />
     </Card>
