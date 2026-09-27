@@ -18,10 +18,12 @@ import { Genre } from "./data/genres";
 import PlatformSelector from "./components/PlatformSelector";
 import { Platform } from "./hooks/usePlatforms";
 import { platform } from "node:os";
+import { GameQuery } from "./temp/gameQuery";
+
+
 function App() {
   const [opened, { toggle }] = useDisclosure();
-  const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null);
-   const [selectedPlatform, setSelectedPlatform] = useState<Platform | null>(null);
+  const [gameQuery, setGameQuery] = useState<GameQuery>({} as GameQuery)
 
   return (
     <MantineProvider theme={theme}>
@@ -31,7 +33,7 @@ function App() {
         padding="md"
       >
         <AppShell.Header>
-          <Group  justify="space-between">
+          <Group justify="space-between">
             <Image src={logo} h={40} w="auto" fit="contain" />
             <NavBar onSearch={(text) => console.log("Searching for:", text)} />
           </Group>
@@ -42,15 +44,20 @@ function App() {
         </AppShell.Header>
         <AppShell.Navbar p="md">
           <GenreList
-            selectedGenre={selectedGenre}
+            selectedGenre={gameQuery.genre}
             onSelectGenre={(genre) => {
-              setSelectedGenre(genre);
+              setGameQuery({...gameQuery, genre});
             }}
           />
         </AppShell.Navbar>
         <AppShell.Main>
-          <PlatformSelector selectedPlatform={selectedPlatform} onSelectPlatform={(platform) => {setSelectedPlatform(platform)}} />
-          <CardGrid selectedPlatform={selectedPlatform} selectedGenre={selectedGenre} />
+          <PlatformSelector
+            selectedPlatform={gameQuery.platform}
+            onSelectPlatform={(platform) => {
+              setGameQuery({...gameQuery, platform});
+            }}
+          />
+          <CardGrid gameQuery={gameQuery} />
         </AppShell.Main>
       </AppShell>
     </MantineProvider>

@@ -7,18 +7,18 @@ import useGames, { Game } from "@/hooks/useGames";
 import GameCardSkeleton from "./GameCardSkeleton";
 import { Genre } from "@/data/genres";
 import { Platform } from "@/hooks/usePlatforms";
+import { GameQuery } from "@/temp/gameQuery";
 
 // interface FetchGamesResponse
 
 interface Props {
-  selectedGenre: Genre | null;
-  selectedPlatform: Platform | null;
+  gameQuery: GameQuery
 }
 
-export function CardGrid({ selectedGenre, selectedPlatform }: Props) {
+export function CardGrid({gameQuery }: Props) {
   // const [games, setGames] = useState<Game[]>([]);
   // const [error, setError] = useState([]);
-  const { games, error, isLoading } = useGames(selectedGenre, selectedPlatform);
+  const { games, error, isLoading } = useGames(gameQuery);
 
   const skeletons = [1, 2, 3, 4, 5, 6];
 
