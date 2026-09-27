@@ -32,7 +32,7 @@ function App() {
         padding="md"
       >
         <AppShell.Header>
-            <NavBar onSearch={(searchedText) => setGameQuery({ ...gameQuery, searchedText})} />
+          <NavBar onSearch={(searchedText) => setGameQuery({ ...gameQuery, searchedText })} />
 
           <Group h="100%" px="md">
             <Burger opened={opened} onClick={toggle} hiddenFrom="sm" size="sm" />
@@ -47,6 +47,7 @@ function App() {
           />
         </AppShell.Navbar>
         <AppShell.Main>
+          <GameHeading gameQuery={gameQuery} />
           <Group gap="md" mb="md">
             <PlatformSelector
               selectedPlatform={gameQuery.platform}
