@@ -2,12 +2,22 @@ import { TextInput } from "@mantine/core";
 import { useRef } from "react";
 import { BsSearch } from "react-icons/bs";
 
-const SearchInput = () => {
+interface Props {
+  onSearch:  (searchText: string) => void;
+}
+
+const SearchInput = ({onSearch}:Props) => {
+ const ref= useRef<HTMLInputElement >(null)
+
   return (
-    <TextInput
-      placeholder="Search games..."
-      leftSection={<BsSearch />}
-    ></TextInput>
+    <form
+      onSubmit={(event) => {
+        event.preventDefault()
+        if (ref.current)  onSearch(ref.current.value);
+      }}
+    >
+      <TextInput ref={ref} placeholder="Search games..." leftSection={<BsSearch />}></TextInput>
+    </form>
   );
 };
 
