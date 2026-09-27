@@ -15,7 +15,7 @@ const GenreList = ({selectedGenre,onSelectGenre}: Props) => {
 
   return (
     <>
-      <Title>
+      <Title my="md">
         Genres
       </Title>
       <List>
