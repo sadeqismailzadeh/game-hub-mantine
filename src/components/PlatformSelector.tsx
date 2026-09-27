@@ -9,7 +9,12 @@ import { BsChevronDown } from "react-icons/bs";
 import usePlatforms, { Platform } from "../hooks/usePlatforms";
 import { Button, Menu } from "@mantine/core";
 
-const PlatformSelector = () => {
+interface Props {
+  onSelectPlatform: (platform: Platform) => void;
+  selectedPlatform: Platform | null
+}
+
+const PlatformSelector = ({ onSelectPlatform, selectedPlatform }: Props) => {
   const { platforms, error } = usePlatforms();
 
   if (error) return null;
@@ -17,7 +22,9 @@ const PlatformSelector = () => {
   return (
     <Menu>
       <Menu.Target>
-        <Button rightSection={<BsChevronDown size={16} />}>Sort by: Newest</Button>
+        <Button rightSection={<BsChevronDown size={16} />}>
+        {selectedPlatform?.slug || "Platforms"}
+        </Button>
       </Menu.Target>
       <Menu.Dropdown>
         {platforms.map((platform) => (
@@ -27,7 +34,7 @@ const PlatformSelector = () => {
           // >
           //   {platform.name}
           // </Menu.Item>
-          <Menu.Item key={platform.slug} onClick={() => console.log("platform", platform)}>
+          <Menu.Item key={platform.slug} onClick={() => onSelectPlatform(platform)}>
             {platform.name}
           </Menu.Item>
         ))}

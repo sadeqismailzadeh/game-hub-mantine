@@ -16,9 +16,12 @@ import NavBar from "@/components/NavBar";
 import { useState } from "react";
 import { Genre } from "./data/genres";
 import PlatformSelector from "./components/PlatformSelector";
+import { Platform } from "./hooks/usePlatforms";
+import { platform } from "node:os";
 function App() {
   const [opened, { toggle }] = useDisclosure();
   const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null);
+   const [selectedPlatform, setSelectedPlatform] = useState<Platform | null>(null);
 
   return (
     <MantineProvider theme={theme}>
@@ -46,8 +49,8 @@ function App() {
           />
         </AppShell.Navbar>
         <AppShell.Main>
-          <PlatformSelector />
-          <CardGrid selectedGenre={selectedGenre} />
+          <PlatformSelector selectedPlatform={selectedPlatform} onSelectPlatform={(platform) => {setSelectedPlatform(platform)}} />
+          <CardGrid selectedPlatform={selectedPlatform} selectedGenre={selectedGenre} />
         </AppShell.Main>
       </AppShell>
     </MantineProvider>

@@ -4,7 +4,7 @@ export interface Platform {
 }
 
 const platforms: Platform[] = [
-  { slug: "pc", name: "PC (Windows)" },
+  { slug: "windows", name: "PC (Windows)" },
   { slug: "browser", name: "Browser" },
 ];
 
